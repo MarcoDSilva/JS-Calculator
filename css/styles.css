@@ -1,1 +1,49 @@
 /* css */
+html {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: whitesmoke;
+}
+
+#calculator-body {
+    width:400px;
+    height:500px;
+    border:1px solid rgb(158, 144, 144);
+    border-radius: 4px;
+    margin:0 auto;
+    background:#111111;
+}
+
+.calc-visor {
+    background:#0e1111;
+    width: 400px;
+    height:100px;
+}
+
+.buttons {
+    display:flex;
+    flex-wrap: wrap;
+    height:400px;
+}
+
+.btn {
+    width:100px;
+    height:80px;  
+    color: #c4b2b2;
+    background: #414a4c; 
+    border:1px solid grey;
+    
+}
+
+.equals {
+    align-items: flex-end;
+}
+
+.clear, .percentage, .div, .add, .mult, .sub, .equals, .decimal {
+    background: #66545e;
+}
+
+.zero {
+    width:300px;
+}
