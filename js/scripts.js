@@ -1,12 +1,16 @@
-//js
-const numbers = document.querySelectorAll(".number");
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach(btn => btn.addEventListener('click', clicked));
 
-numbers.forEach(btn => btn.addEventListener('click', clicked));
+let numIntroduced = "";
+let total;
+
 
 function clicked() {
     console.log(this.name)
+    if(!isNaN(+this.name)) {
+        numIntroduced += this.name;
+    }
 }
-
 
 function add(arr) {
 

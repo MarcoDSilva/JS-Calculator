@@ -4,6 +4,7 @@ html {
     padding: 0;
     text-align: center;
     background: whitesmoke;
+    font-family: Courier, Monaco, monospace;
 }
 
 #calculator-body {
@@ -18,7 +19,16 @@ html {
 .calc-visor {
     background:#0e1111;
     width: 400px;
-    height:100px;
+    height:75px;
+}
+
+.monitor {
+    color:whitesmoke;
+    padding:25px;
+    font-size:25px;
+    background: -webkit-linear-gradient(whitesmoke, pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .buttons {
@@ -32,8 +42,15 @@ html {
     height:80px;  
     color: #c4b2b2;
     background: #414a4c; 
-    border:1px solid grey;
-    
+    border:1px solid grey;    
+}
+
+.btn:hover{
+    width:100px;
+    height:80px;  
+    color: black;
+    background: wheat; 
+    border:1px solid grey;    
 }
 
 .equals {
@@ -46,4 +63,9 @@ html {
 
 .zero {
     width:300px;
+}
+
+.zero:hover {
+    width:300px;
+    background: wheat; 
 }
