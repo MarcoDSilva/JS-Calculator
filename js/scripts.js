@@ -13,7 +13,7 @@ function clicked() {
 
     if (!isNaN(+this.name)) {
         numIntroduced += this.name;
-    } else if (this.name !== "equals" && isNaN(+this.name)) {
+    } else if (this.name !== "=" && isNaN(+this.name)) {
         actualOperation = this.name;
 
         if (arrOperations.length === 0) {
@@ -26,7 +26,7 @@ function clicked() {
                 arrOperations.push(+numIntroduced);
             }
         }
-    } else if (this.name === "equals") {
+    } else if (this.name === "=") {
         arrOperations.push(+numIntroduced);
         numIntroduced = "";
 
@@ -36,36 +36,36 @@ function clicked() {
 
 }
 
-function add(arr) {
-
+function add(num1,num2) {
+    arrOperations.push(num1 + num2);
+    return arrOperations[arrOperations.length - 1];
 }
 
-function multiply(arr) {
-
+function multiply(num1,num2) {
+    arrOperations.push(num1 * num2);
+    return arrOperations[arrOperations.length - 1];
 }
 
-function division(arr) {
-
+function division(num1,num2) {
+    arrOperations.push(num1 / num2);
+    return arrOperations[arrOperations.length - 1];
 }
 
-function subtract(arr) {
-
+function subtract(num1,num2) {
+    arrOperations.push(num1 - num2);
+    return arrOperations[arrOperations.length - 1];
 }
 
 function operate(operator, num1, num2) {
-    switch (operator) {
-        case "multiplication":
-            arrOperations.push(num1 * num2);
-            return arrOperations[arrOperations.length - 1];
-        case "division":
-            arrOperations.push(num1 / num2);
-            return arrOperations[arrOperations.length - 1];
-        case "addition":
-            arrOperations.push(num1 + num2);
-            return arrOperations[arrOperations.length - 1];
-        case "subtraction":
-            arrOperations.push(num1 - num2);
-            return arrOperations[arrOperations.length - 1];
+    switch (operator) {      
+        case "*":
+            return multiply(num1,num2);
+        case "/":
+            return division(num1,num2);           
+        case "+":
+            return add(num1,num2);
+        case "-":
+           return subtract(num1,num2);
         default:
             break;
     }
