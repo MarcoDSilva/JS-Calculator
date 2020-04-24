@@ -1,8 +1,12 @@
-const buttons = document.querySelectorAll(".btn");
+//variables
+const buttons = document.querySelectorAll('.btn');
+const visor = document.querySelector('.monitor');
+
 buttons.forEach(btn => btn.addEventListener('click', clicked));
 
 let numIntroduced = "";
 let arrOperations = [];
+let keysPressed = [];
 let actualOperation = "";
 
 //need to verify the number of operation clicks before giving result or update right away
@@ -13,6 +17,7 @@ function clicked() {
 
     if (!isNaN(+this.name)) {
         numIntroduced += this.name;
+        showCalculations();
     } else if (this.name !== "=" && isNaN(+this.name)) {
         actualOperation = this.name;
 
@@ -28,12 +33,12 @@ function clicked() {
         }
     } else if (this.name === "=") {
         arrOperations.push(+numIntroduced);
-        numIntroduced = "";
-
+        numIntroduced = ""; 
         console.log(operate(actualOperation, arrOperations[arrOperations.length - 2],
-            arrOperations[arrOperations.length - 2]));
+            arrOperations[arrOperations.length - 1]));
+        showResult();
     }
-
+    
 }
 
 function add(num1,num2) {
@@ -57,6 +62,7 @@ function subtract(num1,num2) {
 }
 
 function operate(operator, num1, num2) {
+    const result = arrOperations[arrOperations.length - 1];
     switch (operator) {      
         case "*":
             return multiply(num1,num2);
@@ -71,3 +77,10 @@ function operate(operator, num1, num2) {
     }
 }
 
+function showCalculations() {
+    visor.innerHTML = +numIntroduced;
+}
+
+function showResult() {
+    visor.innerHTML = arrOperations[arrOperations.length - 1];
+}
