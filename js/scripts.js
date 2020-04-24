@@ -1,61 +1,54 @@
-//variables
-const buttons = document.querySelectorAll('.btn');
+//getting DOM Elements
 const numerical = document.querySelectorAll('.number');
 const addition = document.querySelector('.add');
 const div = document.querySelector('.div')
 const mult = document.querySelector('.mult');
 const subt = document.querySelector('.sub');
-const visor = document.querySelector('.monitor');
 const clearBtn = document.querySelector('.clear');
+const equalBtn = document.querySelector('.equals');
+const visor = document.querySelector('.monitor');
+
+//making one array with the operators for easier event attribution
+const operators = [addition, div, mult, subt];
 
 let numIntroduced = "";
-let arrOperations = [];
 let actualOperation = "";
+let arrOperations = [];
 
-
-// buttons.forEach(btn => btn.addEventListener('click', clicked));
+//adding the events to the buttons
 numerical.forEach(btn => btn.addEventListener('click', pressedNumber));
-clearBtn.addEventListener('click', cleanResults);
+operators.forEach(btn => btn.addEventListener('click', pressedOperator));
 
+equalBtn.addEventListener('click', equals);
+clearBtn.addEventListener('click', cleanResults);
 
 //need to verify the number of operation clicks before giving result or update right away
 //get the last result if number is not given
 //refactor the buttons clicked, X function for numbers, X function for operators
 
-// function clicked() {
-//     console.log(this.name)
+function pressedOperator() {
+    console.log(this.name)
 
-//     if (!isNaN(+this.name)) {
-//         numIntroduced += this.name;
-//         showCalculations();
-//     }
-//     else if (this.name !== "=" && isNaN(+this.name)) {
-//         actualOperation = this.name;
+    if (this.name !== "=") {
+        actualOperation = this.name;
 
-//         if (arrOperations.length === 0) {
-//             addNumberToArr(numIntroduced);
-//         }
-//         else {
-//             if (numIntroduced == "") {
-//                 addNumberToArr(arrOperations[arrOperations.length - 1]);
-//             }
-//             else {
-//                 arrOperations.push(+numIntroduced);
-//             }
-//         }
-//     }
-//     else if (this.name === "=") {
-//         equals();
-//     }
-// }
+        if (arrOperations.length === 0) {
+            addNumberToArr(numIntroduced);
+        }
+        else {
+            if (numIntroduced == "") {
+                addNumberToArr(arrOperations[arrOperations.length - 1]);
+            }
+            else {
+                arrOperations.push(+numIntroduced);
+            }
+        }
+    }
+}
 
 function pressedNumber() {
     numIntroduced += this.name;
     console.log(numIntroduced)
-}
-
-function pressedOperator() {
-
 }
 
 function add(num1, num2) {
@@ -118,4 +111,3 @@ function cleanResults() {
     arrOperations = [];
     actualOperation = "";
 }
-    
