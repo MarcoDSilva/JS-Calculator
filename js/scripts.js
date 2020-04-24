@@ -11,8 +11,8 @@ const visor = document.querySelector('.monitor');
 //making one array with the operators for easier event attribution
 const operators = [addition, div, mult, subt];
 
-let numIntroduced = "";
-let actualOperation = "";
+let numIntroduced = '';
+let actualOperation = '';
 let arrOperations = [];
 
 //adding the events to the buttons
@@ -28,20 +28,18 @@ clearBtn.addEventListener('click', cleanResults);
 
 function pressedOperator() {
     console.log(this.name)
+    actualOperation = this.name;
+    visor.innerHTML = numIntroduced + ' ' + actualOperation;
 
-    if (this.name !== "=") {
-        actualOperation = this.name;
-
-        if (arrOperations.length === 0) {
-            addNumberToArr(numIntroduced);
+    if (arrOperations.length === 0) {
+        addNumberToArr(numIntroduced);
+    }
+    else {
+        if (numIntroduced == '') {
+            addNumberToArr(arrOperations[arrOperations.length - 1]);
         }
         else {
-            if (numIntroduced == "") {
-                addNumberToArr(arrOperations[arrOperations.length - 1]);
-            }
-            else {
-                arrOperations.push(+numIntroduced);
-            }
+            arrOperations.push(+numIntroduced);
         }
     }
 }
@@ -49,6 +47,7 @@ function pressedOperator() {
 function pressedNumber() {
     numIntroduced += this.name;
     console.log(numIntroduced)
+    showCalculations();
 }
 
 function add(num1, num2) {
@@ -69,23 +68,23 @@ function subtract(num1, num2) {
 
 function equals() {
     arrOperations.push(+numIntroduced);
-    numIntroduced = "";
+    numIntroduced = '';
 
     operate(actualOperation, arrOperations[arrOperations.length - 2],
         arrOperations[arrOperations.length - 1]);
 
-    showResult()
+    showResult();
 }
 
 function operate(operator, num1, num2) {
     switch (operator) {
-        case "*":
+        case '*':
             return multiply(num1, num2);
-        case "/":
+        case '/':
             return division(num1, num2);
-        case "+":
+        case '+':
             return add(num1, num2);
-        case "-":
+        case '-':
             return subtract(num1, num2);
         default:
             break;
@@ -103,11 +102,12 @@ function showResult() {
 
 function addNumberToArr(num) {
     arrOperations.push(+num);
-    numIntroduced = "";
+    numIntroduced = '';
 }
 
 function cleanResults() {
-    numIntroduced = "";
+    numIntroduced = '';
     arrOperations = [];
-    actualOperation = "";
+    actualOperation = '';
+    visor.innerHTML = '0';
 }
