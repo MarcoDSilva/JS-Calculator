@@ -9,7 +9,7 @@ html {
 
 #calculator-body {
     width:400px;
-    height:500px;
+ 
     border:1px solid rgb(158, 144, 144);
     border-radius: 4px;
     margin:0 auto;
@@ -19,16 +19,25 @@ html {
 .calc-visor {
     background:#0e1111;
     width: 400px;
-    height:75px;
+    height:95px;
+    display:flex;
 }
 
 .monitor {
+    width:400px;
     color:whitesmoke;
-    padding:25px;
+    padding-top:35px;
     font-size:25px;
     background: -webkit-linear-gradient(whitesmoke, pink);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.operand{
+    width:10px;
+    color:yellowgreen;
+    align-self: center;
+    margin-right: 15px;
 }
 
 .buttons {
@@ -57,7 +66,7 @@ html {
     align-items: flex-end;
 }
 
-.clear, .percentage, .div, .add, .mult, .sub, .equals, .decimal {
+.clear, .backspace, .div, .add, .mult, .sub, .equals, .decimal {
     background: #66545e;
 }
 

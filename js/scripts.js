@@ -1,5 +1,6 @@
 //getting DOM Elements
 const numerical = document.querySelectorAll('.number');
+const divOperator = document.querySelector('.operand');
 const addition = document.querySelector('.add');
 const div = document.querySelector('.div')
 const mult = document.querySelector('.mult');
@@ -29,7 +30,8 @@ clearBtn.addEventListener('click', cleanResults);
 function pressedOperator() {
     console.log(this.name)
     actualOperation = this.name;
-    visor.innerHTML = numIntroduced + ' ' + actualOperation;
+    visor.innerHTML = numIntroduced;
+    divOperator.innerHTML = actualOperation;
 
     if (arrOperations.length === 0) {
         addNumberToArr(numIntroduced);
